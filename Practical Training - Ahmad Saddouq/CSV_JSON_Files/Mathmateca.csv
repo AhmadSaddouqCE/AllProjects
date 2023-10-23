@@ -1,0 +1,17 @@
+product,region,year,month,sales_amount
+Product A,Region 1,2022,January,1000
+Product A,Region 1,2022,February,2000
+Product A,Region 2,2022,January,1500
+Product A,Region 2,2022,February,2500
+Product A,Region 1,2023,January,3000
+Product A,Region 1,2023,February,4000
+Product A,Region 2,2023,January,3500
+Product A,Region 2,2023,February,4500
+Product B,Region 1,2022,January,500
+Product B,Region 1,2022,February,1000
+Product B,Region 2,2022,January,750
+Product B,Region 2,2022,February,1250
+Product B,Region 1,2023,January,1500
+Product B,Region 1,2023,February,2000
+Product B,Region 2,2023,January,1750
+Product B,Region 2,2023,February,2250

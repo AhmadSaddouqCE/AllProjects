@@ -1,0 +1,172 @@
+[
+  {
+    "id": 123,
+    "name": "Rana",
+    "age": 30,
+    "gender" : "Female",
+    "address": {
+      "street": "123 Main St",
+      "city": "Anytown",
+      "state": "CA",
+      "zipcode": "12345"
+    },
+    "phone_numbers": [
+      {
+        "type": "home",
+        "number": "555-1234"
+      },
+      {
+        "type": "work",
+        "number": "555-5678"
+      }
+    ],
+    "employment": {
+      "company": "Acme Inc",
+      "title": "Software Engineer",
+      "salary": 100000,
+      "start_date": "2010-01-01"
+    }
+  },
+  {
+    "id": 456,
+    "name": "Jane",
+    "age": 31,
+    "gender" : "Female",
+    "address": {
+      "street": "456 Oak St",
+      "city": "Anytown",
+      "state": "CA",
+      "zipcode": "12345"
+    },
+    "phone_numbers": [
+      {
+        "type": "home",
+        "number": "555-9876"
+      },
+      {
+        "type": "work",
+        "number": "555-5432"
+      }
+    ],
+    "employment": {
+      "company": "Beta Corp",
+      "title": "Digital Manager",
+      "salary": 75000,
+      "start_date": "2015-05-01"
+    }
+  },
+  {
+    "id": 982,
+    "name": "Ahmad",
+    "age": 40,
+    "gender" : "Male",
+    "address": {
+      "street": "456 Oak St",
+      "city": "Anytown",
+      "state": "CA",
+      "zipcode": "12345"
+    },
+    "phone_numbers": [
+      {
+        "type": "home",
+        "number": "555-9876"
+      },
+      {
+        "type": "work",
+        "number": "555-5432"
+      }
+    ],
+    "employment": {
+      "company": "Beta Corp",
+      "title": "Digital Manager",
+      "salary": 15000,
+      "start_date": "2012-03-12"
+    }
+  },
+
+  {
+    "id": 912,
+    "name": "Ramzi",
+    "age": 24,
+    "gender" : "Male",
+    "address": {
+      "street": "456 Oak St",
+      "city": "Anytown",
+      "state": "CA",
+      "zipcode": "12345"
+    },
+    "phone_numbers": [
+      {
+        "type": "home",
+        "number": "555-9876"
+      },
+      {
+        "type": "work",
+        "number": "555-5432"
+      }
+    ],
+    "employment": {
+      "company": "Beta Corp",
+      "title": "Digital Manager",
+      "salary": 3000,
+      "start_date": "2015-05-01"
+    }
+  },
+  {
+    "id": 762,
+    "name": "Selena",
+    "age": 28,
+    "gender" : "Female",
+    "address": {
+      "street": "456 Oak St",
+      "city": "Anytown",
+      "state": "CA",
+      "zipcode": "12345"
+    },
+    "phone_numbers": [
+      {
+        "type": "home",
+        "number": "555-9876"
+      },
+      {
+        "type": "work",
+        "number": "555-5432"
+      }
+    ],
+    "employment": {
+      "company": "Beta Corp",
+      "title": "Marketing Manager",
+      "salary": 42000,
+      "start_date": "2015-05-01"
+    }
+  },
+  {
+    "id": 201,
+    "name": "Mohammad",
+    "gender" : "Male",
+    "age": 32,
+    "address": {
+      "street": "456 Oak St",
+      "city": "Anytown",
+      "state": "CA",
+      "zipcode": "12345"
+    },
+    "phone_numbers": [
+      {
+        "type": "home",
+        "number": "555-9876"
+      },
+      {
+        "type": "work",
+        "number": "555-5432"
+      }
+    ],
+    "employment": {
+      "company": "Beta Corp",
+      "title": "Marketing Manager",
+      "salary": 50000,
+      "start_date": "2015-05-01"
+    }
+  }
+
+]
