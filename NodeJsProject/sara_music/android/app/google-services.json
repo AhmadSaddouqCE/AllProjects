@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "20455821120",
+    "project_id": "doremi-6470b",
+    "storage_bucket": "doremi-6470b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:20455821120:android:826f45bfd9efef1ba8b4a5",
+        "android_client_info": {
+          "package_name": "com.example.sara_music"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "20455821120-6qghb9hr8bf6ktn2h9vb7r26nkq91nrf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCZUTtfQm03wGW1Tju6T5slbzIQwMZwYW8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "20455821120-6qghb9hr8bf6ktn2h9vb7r26nkq91nrf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
