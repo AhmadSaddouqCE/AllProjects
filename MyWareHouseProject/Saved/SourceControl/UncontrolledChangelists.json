@@ -1,0 +1,18 @@
+{
+	"version": 1,
+	"changelists": [
+		{
+			"guid": "00000000000000000000000000000000",
+			"description": "Default Uncontrolled Changelist",
+			"files": [
+				"D:/MyWareHouseProject/Content/StarterContent/HDRI/HDRI_Epic_Courtyard_Daylight.uasset",
+				"D:/MyWareHouseProject/Content/StarterContent/Maps/Minimal_Default.umap",
+				"D:/MyWareHouseProject/Content/StarterContent/Architecture/BP_SphereActor.uasset",
+				"D:/MyWareHouseProject/Content/StarterContent/Architecture/BP_Projectile.uasset",
+				"D:/MyWareHouseProject/Content/NewGame.umap",
+				"D:/MyWareHouseProject/Content/IndustryPropsPack6/Meshes/SM_Barrel01.uasset",
+				"D:/MyWareHouseProject/Content/BP_Barrel.uasset"
+			]
+		}
+	]
+}
