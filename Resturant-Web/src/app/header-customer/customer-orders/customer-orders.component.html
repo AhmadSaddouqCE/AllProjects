@@ -1,0 +1,256 @@
+<app-header-customer></app-header-customer>
+<div id="wrapper">
+  <div id="sidebar-wrapper">
+    <ul class="sidebar-nav nav-pills nav-stacked" id="menu">
+      <li>
+        <a routerLink="/Dashboard"
+          ><span class="fa-stack fa-lg pull-left"
+            ><i class="fa fa-dashboard fa-stack-1x"></i
+          ></span>
+          Dashboard</a
+        >
+      </li>
+      <li routerLinkActive="active">
+        <a routerLink="/CustomerCart"
+          ><span class="fa-stack fa-lg pull-left">
+            <i class="fa fa-cart-plus fa-stack-1x"></i> </span
+          >Cart</a
+        >
+      </li>
+      <li>
+        <a routerLink="/Settings-Customer">
+          <span class="fa-stack fa-lg pull-left">
+            <i class="fa fa-database fa-stack-1x" aria-hidden="true"></i> </span
+          >Settings</a
+        >
+      </li>
+      <li>
+        <a href="#"
+          ><span class="fa-stack fa-lg pull-left"
+            ><i class="fa fa-support fa-stack-1x"></i></span
+          >Help/Support</a
+        >
+      </li>
+      <li>
+        <a routerLink="/Customer-Login"
+          ><span class="fa-stack fa-lg pull-left"
+            ><i class="fa fa-sign-out fa-stack-1x"></i></span
+          >Log Out</a
+        >
+      </li>
+    </ul>
+  </div>
+</div>
+<div id="page-content-wrapper">
+  <div class="content-container">
+    <div class="container" *ngIf="customerData.length > 0">
+      <h4 class="text text-center">Orders List</h4>
+      <br />
+      <div class="table-responsive">
+        <table class="table table-bordered text text-center custom-table">
+          <thead>
+            <tr>
+              <td colspan="9"><b>Orders Details</b></td>
+            </tr>
+            <tr>
+              <td><b>Order ID</b></td>
+              <!-- <td><b>Customer Name</b></td> -->
+              <td><b># Of Items</b></td>
+              <td><b>Order Total Price</b></td>
+              <td><b>Order Date</b></td>
+              <td><b>City</b></td>
+              <td><b>Address</b></td>
+              <td><b>Status</b></td>
+              <td>
+                <b> <u>Modify Order</u></b>
+              </td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let order of customerData">
+              <td>
+                <p
+                  class="w-100 text text-left px-3"
+                  role="button"
+                  [class.active-order]="
+                    order.orderId === activeOrderId && order.showDetails
+                  "
+                  (click)="toggleOrderDetails(order)"
+                >
+                  {{ order.orderId }}
+                </p>
+                <table class="table table-bordered" *ngIf="order.showDetails">
+                  <thead>
+                    <tr>
+                      <th class="text text-center">Product Name</th>
+                      <th class="text text-center">Quantity</th>
+                      <th class="text text-center">Total Price</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let product of order.products">
+                      <td>{{ product.productName }}</td>
+                      <td>{{ product.quantitiy }}</td>
+                      <td>{{ product.totalPrice }}$</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </td>
+              <!-- <td>{{ customerName }}</td> -->
+              <td>{{ order.numberOfItems }}</td>
+              <td>{{ order.totalPrice }}$</td>
+              <td>{{ order.orderDate }}</td>
+              <td>{{ order.city }}</td>
+              <td>{{ order.address }}</td>
+              <td>{{ order.orderStatus }}</td>
+              <td class="d-flex justify-content-end border-0">
+                <div class="px-2">
+                  <button
+                    class="btn fa fa-edit"
+                    title="Modify Order"
+                    (click)="openEditOrderModal(order.orderId)"
+                  ></button>
+                </div>
+                <div class="px-2">
+                  <button
+                    class="btn fa fa-trash"
+                    title="Delete Product"
+                    (click)="DeleteProduct(order.orderId)"
+                  ></button>
+                </div>
+                <div class="px-2">
+                  <button
+                    class="btn fa fa-remove"
+                    title="Cancel Order"
+                    (click)="DeleteOrder(order.orderId)"
+                  ></button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <h3 style="padding: 0rem 1rem">
+          Orders Total Price: {{ TotalPrice }}$
+        </h3>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal" id="editOrderModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Add Products/Edit Quantity</h5>
+      </div>
+      <div class="modal-body">
+        <form class="align-items-center">
+          <div class="custom-select">
+            <select
+              id="modifyOrder"
+              class="form-control mr-3"
+              name="modifyOrder"
+              [(ngModel)]="selectedProductName"
+              (ngModelChange)="setProductQuantity()"
+            >
+            <option class="d-none"></option>
+            <optgroup label="Edit Quantity">
+              <ng-container *ngFor="let product of Products">
+                <ng-container *ngIf="productExistsInOrder(product.name)">
+                  <option [value]="product.name">
+                    {{ product.name }}
+                  </option>
+                </ng-container>
+              </ng-container>
+            </optgroup>
+              <optgroup label="Add To Order">
+              <ng-container *ngFor="let product of Products">
+                <ng-container *ngIf="!productExistsInOrder(product.name)">
+                  <option [value]="product.name">
+                    {{ product.name }} 
+                  </option>
+                </ng-container>
+              </ng-container>
+            </optgroup>
+
+            </select>
+          </div>
+          <br />
+          <div class="form-group">
+            <label for="quantity" class="mr-3">Quantity:</label>
+            <input
+              type="number"
+              id="quantity"
+              class="form-control"
+              [(ngModel)]="selectedQuantity"
+              (ngModelChange)="resetQuantity(selectedQuantity)"
+              name="productName"
+              placeholder="Quantity"
+              #productquantity
+            />
+            <br />
+            <p>Total Quantity Is: {{ setQuantityBySelect }}</p>
+          </div>
+        </form>
+      </div>
+
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-primary"
+          (click)="modifyProductToList()"
+        >
+          Save Changes
+        </button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="CloseModel()">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="DeleteProductModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Delete Product From Order</h5>
+      </div>
+      <div class="modal-body">
+        <form class="align-items-center">
+          <div class="form-group">
+            <label for="deleteModal" class="mr-3"
+              >Select Product To Delete:</label
+            >
+            <select
+              id="deleteModal1"
+              class="form-control mr-3"
+              name="deleteModal"
+              [(ngModel)]="selectedProductName"
+            >
+            <option class="d-none"></option>
+              <option
+                *ngFor="let product of displayProductsToDelete"
+                [value]="product.productName"
+              >
+                {{ product.productName }}
+              </option>
+            </select>
+          </div>
+        </form>
+      </div>
+
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-primary"
+          (click)="DeleteProductFromOrder()"
+        >
+          Save Changes
+        </button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="CloseModel()">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

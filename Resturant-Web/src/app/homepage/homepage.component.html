@@ -1,0 +1,65 @@
+<app-header></app-header>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <h3 class="text text-center">{{ Message }}</h3>
+      <br />
+      <br />
+      <form [formGroup]="form1" class="navbar-form text-center">
+        <div class="input-group col-md-5">
+          <label for="search">Search Bar</label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="name"
+            placeholder="Write something to get it !"
+            (ngModelChange)="onInputChange($event)"
+          />
+        </div>
+      </form>
+      <br />
+      <br />
+      <table class="table table-striped" *ngIf="ElementCustomer.length > 0">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Country</th>
+            <th scope="col">City</th>
+            <th scope="col">Address</th>
+            <th scope="col">Phone</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let customer of ElementCustomer">
+            <td>{{ customer.name }}</td>
+            <td>{{ customer.email }}</td>
+            <td>{{ customer.country }}</td>
+            <td>{{ customer.city }}</td>
+            <td>{{ customer.address }}</td>
+            <td>{{ customer.phone }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <table class="table table-striped" *ngIf="ElementProdut.length > 0">
+        <thead>
+          <tr>
+            <th scope="col">Product Name</th>
+            <th scope="col">Product Quantity</th>
+            <th scope="col">Product Price</th>
+            <th scope="col">Product Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of ElementProdut">
+            <td>{{ product.name }}</td>
+            <td>{{ product.quantity }}</td>
+            <td>{{ product.price }}</td>
+            <td>{{ product.description }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <h5 class="text text-center">{{ CheckEmpty }}</h5>
+    </div>
+  </div>
+</div>

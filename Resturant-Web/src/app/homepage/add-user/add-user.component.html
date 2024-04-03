@@ -1,0 +1,200 @@
+<app-header></app-header>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <br />
+      <button
+        class="btn btn-primary"
+        data-bs-toggle="modal"
+        data-bs-target="#addUserModal"
+        (click)="resetData()"
+      >
+        Add New User
+      </button>
+      <div
+        class="modal"
+        id="addUserModal"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="addUserModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button
+                type="button"
+                class="close p-2 mt-1"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+              <h4 class="modal-title" id="addUserModalLabel">Add New User</h4>
+            </div>
+            <div class="modal-body">
+              <form [formGroup]="form" (ngSubmit)="submit()">
+                <div class="form-group">
+                  <label for="name">Name</label>
+                  <input
+                    type="text"
+                    formControlName="name"
+                    id="name"
+                    class="form-control"
+                    placeholder="Please enter your Name"
+                    #nameInput
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="email">Email</label>
+                  <input
+                    type="text"
+                    formControlName="email"
+                    id="email"
+                    class="form-control"
+                    placeholder="Please enter your Email"
+                    #emailInput
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="password">Password</label>
+                  <input
+                    type="text"
+                    formControlName="password"
+                    id="password"
+                    class="form-control"
+                    placeholder="Please enter your Password"
+                    #passwordInput
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="country">Country</label>
+                  <input
+                    type="text"
+                    formControlName="country"
+                    id="Country"
+                    class="form-control"
+                    placeholder="Enter your Country"
+                    #countryInput
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="city">City</label>
+                  <input
+                    type="text"
+                    formControlName="city"
+                    id="City"
+                    class="form-control"
+                    placeholder="Enter your City"
+                    #cityInput
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="address">Address</label>
+                  <input
+                    type="text"
+                    formControlName="address"
+                    id="Address"
+                    class="form-control"
+                    placeholder="Enter your Address"
+                    #addressInput
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="dateOfBirth">Date of Birth</label>
+                  <input
+                    type="date"
+                    formControlName="dateofbirth"
+                    id="dateOfBirth"
+                    name="dateOfBirth"
+                    class="form-control"
+                    placeholder="Select your date of birth"
+                    #dateOfBirthInput
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="phone">Phone</label>
+                  <input
+                    type="tel"
+                    formControlName="phone"
+                    id="phoneNumber"
+                    name="phoneNumber"
+                    class="form-control"
+                    placeholder="Enter your phone number"
+                    #phoneNumberInput
+                  />
+                </div>
+                <br />
+                <br />
+                <div class="button-container">
+                  <button
+                    type="submit"
+                    class="btn btn-success"
+                    (click)="Check()"
+                  >
+                    Add new customer
+                  </button>
+                </div>
+              </form>
+              <br>
+              <br>
+              <p
+                class="text-center fs-3"
+                [ngClass]="
+                  isAccountCreated ? 'text-success pb-1' : 'text-danger pb-1'
+                "
+              >
+                {{ Message }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <br />
+      <br />
+      <br />
+
+      <div class="table-responsive">
+        <table class="table table-bordered text text-center custom-table">
+          <thead>
+            <tr colspan="2">
+              <td><b>Customer Name</b></td>
+              <td><b>Category Email</b></td>
+              <td><b>Country</b></td>
+              <td><b>City</b></td>
+              <td><b>Address</b></td>
+              <td><b>Customer Number</b></td>
+            
+              <td>
+                <b> <u>Delete Customer</u></b>
+              </td>
+            </tr>
+          </thead>
+        <tbody *ngIf="customers.length > 0">
+          <tr *ngFor="let customer of customers">
+            <td>{{ customer.name }}</td>
+            <td>{{ customer.email }}</td>
+            <td>{{ customer.country }}</td>
+            <td>{{ customer.city }}</td>
+            <td>{{ customer.address }}</td>
+            <td>{{ customer.phone }}</td>
+            <td class="d-flex justify-content-center">
+              <div class="px-2">
+                <button class="btn fa fa-trash"
+                title="Delete Customer"></button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+        <tbody *ngIf="customers.length === 0">
+          <tr>
+            <td colspan="7" class="text-center">No users found</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+</div>

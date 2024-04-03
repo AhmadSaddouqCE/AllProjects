@@ -1,0 +1,230 @@
+<app-header-customer></app-header-customer>
+<br>
+<br>
+<br>
+<br>
+<div id="wrapper">
+  <div id="sidebar-wrapper">
+    <ul class="sidebar-nav nav-pills nav-stacked" id="menu">
+      <li>
+        <a routerLink="/Dashboard"
+          ><span class="fa-stack fa-lg pull-left"
+            ><i class="fa fa-dashboard fa-stack-1x"></i
+          ></span>
+          Dashboard</a
+        >
+      </li>
+      <li routerLinkActive="active">
+        <a routerLink="/CustomerCart"
+          ><span class="fa-stack fa-lg pull-left">
+            <i class="fa fa-cart-plus fa-stack-1x"></i> </span
+          >Cart</a
+        >
+      </li>
+      <li>
+        <a routerLink="/Settings-Customer">
+          <span class="fa-stack fa-lg pull-left">
+            <i class="fa fa-database fa-stack-1x" aria-hidden="true"></i> </span
+          >Settings</a
+        >
+      </li>
+      <li>
+        <a href="#"
+          ><span class="fa-stack fa-lg pull-left"
+            ><i class="fa fa-support fa-stack-1x"></i></span
+          >Help/Support</a
+        >
+      </li>
+      <li>
+        <a routerLink="/Customer-Login"
+          ><span class="fa-stack fa-lg pull-left"
+            ><i class="fa fa-sign-out fa-stack-1x"></i></span
+          >Log Out</a
+        >
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12 col-lg-10 col-xl-8 mx-auto">
+      <div class="my-4">
+        <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
+          <li class="nav-item">
+            <a
+              class="nav-link active"
+              id="home-tab"
+              data-bs-toggle="tab"
+              href="#home"
+              role="tab"
+              aria-controls="home"
+              aria-selected="false"
+              >Profile</a
+            >
+          </li>
+        </ul>
+        <form>
+          <div class="row mt-5 align-items-center">
+            <div class="col-md-3 text-center mb-5">
+              <div class="avatar avatar-xl">
+                <img
+                  src="https://bootdey.com/img/Content/avatar/avatar6.png"
+                  alt="..."
+                  class="avatar-img rounded-circle"
+                />
+              </div>
+            </div>
+            <div class="col">
+              <div class="row align-items-center">
+                <div class="col">
+                  <h4 class="mb-1">{{ name }}</h4>
+                  <p class="small mb-3">
+                    <span class="badge badge-dark">{{ country }}</span>
+                  </p>
+                </div>
+              </div>
+              <div class="row mb-4">
+                <div class="col-md-1">
+                  <p class="small mb-0 text-muted">{{ city }}</p>
+                  <p class="small mb-0 text-muted">{{ address }}</p>
+                  <p class="small mb-0 text-muted">{{ phone }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <hr class="my-4" />
+          <div class="form-row">
+            <div class="form-group">
+              <label for="firstname">Username</label>
+              <input
+                type="text"
+                id="firstname"
+                class="form-control"
+                value="{{ name }}"
+                #nameInput
+              />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputEmail4">Email</label>
+            <input
+              type="email"
+              class="form-control"
+              id="inputEmail4"
+              value="{{ email }}"
+              #emailInput
+            />
+          </div>
+          <div class="form-group">
+            <label for="inputAddress5">Address</label>
+            <input
+              type="text"
+              class="form-control"
+              id="inputAddress5"
+              value="{{ address }}"
+              #addressInput
+            />
+          </div>
+          <div class="form-group">
+            <label for="inputCity6">City</label>
+            <input
+              type="text"
+              class="form-control"
+              id="inputCity6"
+              value="{{ city }}"
+              #cityInput
+            />
+          </div>
+          <div class="form-group">
+            <label for="inputCountry7">Country</label>
+            <input
+              type="text"
+              class="form-control"
+              id="inputCountry7"
+              value="{{ country }}"
+              #countryInput
+            />
+          </div>
+          <div class="form-group">
+            <label for="dateOfBirth">Date of Birth:</label>
+            <input
+              type="date"
+              class="form-control"
+              id="dateOfBirth"
+              [value]="dateofbirth"
+              #dateOfBirthInput
+            />
+          </div>
+          <div class="form-group">
+            <label for="inputPhone8">Phone</label>
+            <input
+              type="text"
+              class="form-control"
+              id="inputPhone8"
+              value="{{ phone }}"
+              #phoneInput
+            />
+          </div>
+          <button
+            type="button"
+            class="btn btn-info"
+            id="buttoninfo"
+            (click)="updateInfo()"
+          >
+            Update Data
+          </button>
+          <hr class="my-4" />
+          <div class="row mb-4">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="inputPassword4">Old Password</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  id="inputPassword5"
+                  #oldPasswordInput
+                />
+              </div>
+              <div class="form-group">
+                <label for="inputPassword5">New Password</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  id="inputPassword5"
+                  #newPasswordInput
+                />
+              </div>
+              <div class="form-group">
+                <label for="inputPassword6">Confirm Password</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  id="inputPassword6"
+                  #confirmPasswordInput
+                />
+              </div>
+            </div>
+            <!-- <div class="col-md-6">
+                            <p class="mb-2">Password requirements</p>
+                            <p class="small text-muted mb-2">To create a new password, you have to meet all of the following requirements:</p>
+                            <ul class="small text-muted pl-4 mb-0">
+                                <li>Minimum 8 character</li>
+                                <li>At least one special character</li>
+                                <li>At least one number</li>
+                                <li>Can’t be the same as a previous password</li>
+                            </ul>
+                        </div> -->
+          </div>
+          <button
+            type="button"
+            class="btn btn-info"
+            id="buttonpass"
+            (click)="updatePassword()"
+          >
+            Update Password
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

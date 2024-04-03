@@ -1,0 +1,194 @@
+<app-header-customer></app-header-customer>
+
+<div id="wrapper">
+  <div id="sidebar-wrapper">
+    <ul class="sidebar-nav nav-pills nav-stacked" id="menu">
+      <li>
+        <a routerLink="/Dashboard"
+          ><span class="fa-stack fa-lg pull-left"
+            ><i class="fa fa-dashboard fa-stack-1x"></i
+          ></span>
+          Dashboard</a
+        >
+      </li>
+      <li routerLinkActive="active">
+        <a routerLink="/CustomerCart"
+          ><span class="fa-stack fa-lg pull-left">
+            <i class="fa fa-cart-plus fa-stack-1x"></i> </span
+          >Cart</a
+        >
+      </li>
+      <li>
+        <a routerLink="/Settings-Customer">
+          <span class="fa-stack fa-lg pull-left">
+            <i class="fa fa-database fa-stack-1x" aria-hidden="true"></i> </span
+          >Settings</a
+        >
+      </li>
+      <li>
+        <a href="#"
+          ><span class="fa-stack fa-lg pull-left"
+            ><i class="fa fa-support fa-stack-1x"></i></span
+          >Help/Support</a
+        >
+      </li>
+      <li>
+        <a routerLink="/Customer-Login"
+          ><span class="fa-stack fa-lg pull-left"
+            ><i class="fa fa-sign-out fa-stack-1x"></i></span
+          >Log Out</a
+        >
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="container container cart-container" *ngIf="CartItems.length > 0">
+  <div class="row justify-content-center">
+    <div class="col-sm-12 col-md-10 col-md-offset-1">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Product Image</th>
+            <th class="text-center">Name</th>
+            <th class="text-center">Quantity</th>
+            <th class="text-center">Price</th>
+            <th class="text-center">Total</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let carts of CartItems">
+            <td class="col-md-3">
+              <div class="media">
+                <a class="thumbnail" href="#">
+                  <img class="media-object" [src]="carts.imageUrl" />
+                </a>
+              </div>
+            </td>
+            <td class="col-sm-1 col-md-7" style="text-align: center">
+              <strong>{{ carts.productName }}</strong>
+            </td>
+            <td class="col-sm-1 col-md-1" style="text-align: center">
+              <strong>{{ carts.quantity }}</strong>
+            </td>
+            <td class="col-sm-1 col-md-1 text-center">
+              <strong>{{ carts.price }}$</strong>
+            </td>
+            <td class="col-sm-1 col-md-1 text-center">
+              <strong>{{ carts.totalPrice }}$</strong>
+            </td>
+            <td class="col-sm-1 col-md-1">
+              <button
+                type="button"
+                class="btn btn-danger"
+                (click)="deleteFromCart(carts.cartid,carts.productName)"
+              >
+                <span class="glyphicon glyphicon-remove"></span> Remove
+              </button>
+            </td>
+            <td class="col-sm-1 col-md-1">
+              <button
+                class="btn btn-success"
+                data-bs-toggle="modal"
+                data-bs-target="#editQuantityModal"
+                (click)="setCartId_Quantity(carts.cartid, carts.quantity)"
+              >
+                <span class="glyphicon glyphicon-edit"></span> Edit
+              </button>
+            </td>
+          </tr>
+
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><h3>Total</h3></td>
+            <td class="text-right">
+              <h3>
+                <strong>{{ TotalPrice }}$</strong>
+              </h3>
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+              <button
+                type="button"
+                class="btn btn-default"
+                routerLink="/Dashboard"
+              >
+                <span class="glyphicon glyphicon-shopping-cart"></span> Continue
+                Shopping
+              </button>
+            </td>
+            <td>
+              <button
+                type="button"
+                class="btn btn-success"
+                (click)="addOrder()"
+              >
+                Checkout <span class="glyphicon glyphicon-play"></span>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<ng-template #emptyCart>
+  <div class="container container-empty">
+    <p>Your cart is empty.</p>
+  </div>
+</ng-template>
+
+<div
+  class="modal"
+  id="editQuantityModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="editQuantityModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editQuantityModalLabel">Edit Quantity</h5>
+        <button
+          type="button"
+          class="close p-2 mt-1"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <label for="quantity">Quantity:</label>
+        <input
+          type="number"
+          id="quantity"
+          class="form-control"
+          [(ngModel)]="productquantity.value"
+          (ngModelChange)="resetQuantity(productquantity.value)"
+          #productquantity
+        />
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+        <button
+          type="button"
+          class="btn btn-primary"
+          id="saveQuantityBtn"
+          (click)="editQuantity()"
+        >
+          Save changes
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

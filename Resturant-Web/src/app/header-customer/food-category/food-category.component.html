@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+
+<app-header-customer></app-header-customer>
+
+<div id="wrapper">
+  <div id="sidebar-wrapper">
+    <ul class="sidebar-nav nav-pills nav-stacked" id="menu">
+      <li routerLinkActive="active">
+        <a routerLink="/Dashboard"
+          ><span class="fa-stack fa-lg pull-left"
+            ><i class="fa fa-dashboard fa-stack-1x"></i
+          ></span>
+          Dashboard</a
+        >
+      </li>
+      <li>
+        <a routerLink="/CustomerCart"
+          ><span class="fa-stack fa-lg pull-left">
+            <i class="fa fa-cart-plus fa-stack-1x"></i> </span
+          >Cart</a
+        >
+      </li>
+      <li>
+        <a routerLink="/Settings-Customer">
+          <span class="fa-stack fa-lg pull-left">
+            <i class="fa fa-database fa-stack-1x" aria-hidden="true"></i> </span
+          >Settings</a
+        >
+      </li>
+      <li>
+        <a href="#"
+          ><span class="fa-stack fa-lg pull-left"
+            ><i class="fa fa-support fa-stack-1x"></i></span
+          >Help/Support</a
+        >
+      </li>
+      <li>
+        <a routerLink="/Customer-Login"
+          ><span class="fa-stack fa-lg pull-left"
+            ><i class="fa fa-sign-out fa-stack-1x"></i></span
+          >Log Out</a
+        >
+      </li>
+    </ul>
+  </div>
+  <div id="page-content-wrapper">
+    <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-interval="2000" data-bs-ride="carousel" style="margin-right: 2%; margin-top: 5%;">
+        <div class="carousel-inner">
+          <div class="carousel-item" *ngFor="let Category of CategoriesList; let i = index" [ngClass]="{'active': i === 0}">
+            <img [src]="Category.imageUrl" class="d-block w-100 h-100 overflow-hidden " alt="Product Image">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev" style="top: 50%; transform: translateY(-50%); left: 15px;">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next" style="top: 50%; transform: translateY(-50%); right: 15px;">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    <div class="content-container">
+      <br />
+      <div class="container-fluid" style="width: auto;">
+        <h4>Available Categories</h4>
+        <div class="row">
+          <div class="col-md-3" *ngFor="let Category of CategoriesList">
+            <div class="thumbnail btn" (click)="showCategoryProducts(Category.categoryId)">
+              <img
+                [src]="Category.imageUrl"
+                alt="Product Image"
+                style="width: 100%; height: auto"
+              />
+           
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <br />
+    </div>
+
+  </div>
+</div>
+

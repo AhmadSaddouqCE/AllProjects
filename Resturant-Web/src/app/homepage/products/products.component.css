@@ -1,0 +1,13 @@
+.custom-table {
+    background-color: #fff;
+    border-radius:12px;
+    box-shadow: 12px 12px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .custom-table th, .custom-table td {
+    padding: 12px;
+  }
+  
+  .custom-table thead {
+    background-color: #f0f0f0;
+  }

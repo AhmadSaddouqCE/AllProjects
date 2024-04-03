@@ -1,0 +1,22 @@
+*{
+  background-color: whitesmoke;
+}
+.Signup-form{
+  box-shadow: 0 40px 40px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+  width: 80%; 
+  max-width: 450px; 
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 35px;
+}
+.form-control{
+  border-radius: 10px;
+}
+.btn{
+  background-color: cadetblue;
+  color:black;
+  border-radius: 150px;
+}
+.btn:hover{
+  color: bisque;
+}

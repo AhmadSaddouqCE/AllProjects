@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="row d-flex justify-content-center align-items-center vh-100">
+        <form
+          [formGroup]="form"
+          (ngSubmit)="submitSignUp()"
+          class="Signup-form"
+        >
+          <div class="form-group">
+            <label for="Name">Name: </label>
+            <input
+              type="text"
+              formControlName="name"
+              id="name"
+              class="form-control"
+              placeholder="Enter your Name"
+              #nameInput
+            />
+          </div>
+          <div class="form-group">
+            <label for="Email">Email: </label>
+            <input
+              type="email"
+              formControlName="email"
+              id="email"
+              class="form-control"
+              placeholder="Enter your Email"
+              required
+              #emailInput
+            />
+          </div>
+          <div class="form-group">
+            <label for="Password">Password: </label>
+            <input
+              type="password"
+              formControlName="password"
+              id="password"
+              class="form-control"
+              placeholder="Enter your Password"
+              #passwordInput
+            />
+          </div>
+          <div class="form-group">
+            <label for="Country">Country</label>
+            <input
+              type="text"
+              formControlName="country"
+              id="Country"
+              class="form-control"
+              placeholder="Enter your Country"
+              #countryInput
+            />
+          </div>
+          <div class="form-group">
+            <label for="City">City: </label>
+            <input
+              type="text"
+              formControlName="city"
+              id="City"
+              class="form-control"
+              placeholder="Enter your City"
+              #cityInput
+            />
+          </div>
+          <div class="form-group">
+            <label for="Address">Address: </label>
+            <input
+              type="text"
+              formControlName="address"
+              id="Address"
+              class="form-control"
+              placeholder="Enter your Address"
+              #addressInput
+            />
+          </div>
+          <div class="form-group">
+            <label for="dateOfBirth">Date of Birth:</label>
+            <input
+              type="date"
+              formControlName="dateofbirth"
+              id="dateOfBirth"
+              name="dateOfBirth"
+              class="form-control"
+              placeholder="Select your date of birth"
+              #dateOfBirthInput
+            />
+          </div>
+          <div class="form-group">
+            <label for="Phone">Phone: </label>
+            <input
+              type="tel"
+              formControlName="phone"
+              id="phoneNumber"
+              name="phoneNumber"
+              class="form-control"
+              placeholder="Enter your phone number"
+              #phoneNumberInput
+            />
+          </div>
+          <div class="d-flex justify-content-center align-items-center">
+            <button
+              type="submit"
+              class="btn w-25"
+              (click)="
+                Check(
+                  nameInput.value,
+                  emailInput.value,
+                  passwordInput.value,
+                  countryInput.value,
+                  cityInput.value,
+                  addressInput.value,
+                  dateOfBirthInput.value,
+                  phoneNumberInput.value
+                )
+              "
+            >
+              Sign Up
+            </button>
+          </div>
+          <br />
+          <p
+            class="d-flex justify-content-center align-items-center"
+            style="color: red"
+            role="alert"
+            *ngIf="alert === false"
+          >
+            Please Fill all the Fields
+          </p>
+          <p
+            class="text-center fs-3"
+            [ngClass]="
+              isAccountCreated ? 'text-success pb-1' : 'text-danger pb-1'
+            "
+          >
+            {{ Message }}
+          </p>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

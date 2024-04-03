@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="row d-flex justify-content-center align-items-center vh-100">
+        <form
+          [formGroup]="form"
+          (ngSubmit)="loginCustomer()"
+          class="login-form"
+        >
+          <div class="form-group">
+            <label for="name">Name:</label>
+            <input
+              type="text"
+              placeholder="Enter your name"
+              class="form-control"
+              formControlName="name"
+            />
+          </div>
+          <div class="form-group">
+            <label for="Password">Password:</label>
+            <input
+              type="password"
+              placeholder="Enter your password"
+              class="form-control"
+              formControlName="password"
+            />
+          </div>
+
+          <div class="d-flex justify-content-center align-items-center">
+            <button type="submit" class="btn w-25">Login</button>
+          </div>
+          <div class="d-flex justify-content-start align-items-start mt-2">
+            <a routerLink="/Customer-SignUp"
+              >Don't Have An Account? <strong>Sign Up</strong></a
+            >
+          </div>
+          <div
+            class="d-flex justify-content-center align-content-center"
+            style="color: red"
+          >
+            <p
+              *ngIf="showAlert"
+              class="text-center fs-3"
+              [ngClass]="!showAlert ? 'text-success pb-1' : 'text-danger pb-1'"
+            >
+              Fill All The Fields!
+            </p>
+            <p
+              class="text-center fs-3"
+              [ngClass]="
+                isAccountCreated ? 'text-success pb-1' : 'text-danger pb-1'
+              "
+            >
+              {{ Message }}
+            </p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

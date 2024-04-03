@@ -1,0 +1,57 @@
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 login-form">
+        <h3>Login!</h3>
+        <form [formGroup]="form" (ngSubmit)="LoginAdmin()">
+          <div class="form-group">
+            <input
+              type="text"
+              formControlName="name"
+              id="name"
+              class="form-control"
+              required
+              placeholder="Please enter your Name"
+              value=""
+              #nameinput
+            />
+          </div>
+          <div class="form-group">
+            <input
+              type="password"
+              formControlName="password"
+              id="password"
+              class="form-control"
+              required
+              placeholder="Please enter your Password"
+              value=""
+              #passwordinput
+            />
+          </div>
+
+          <button class="btn btn-primary">Login</button>
+          <br />
+          <br />
+          <div class="form-group">
+            <a href="#" class="ForgetPwd">Forget Password ?</a>
+          </div>
+        </form>
+        <p
+          *ngIf="showAlert"
+          class="text-center fs-3"
+          [ngClass]="!showAlert ? 'text-success pb-1' : 'text-danger pb-1'"
+        >
+          Fill All The Fields!
+        </p>
+        <p
+          class="text-center fs-3"
+          [ngClass]="
+            isAccountCreated ? 'text-success pb-1' : 'text-danger pb-1'
+          "
+        >
+          {{ Message }}
+        </p>
+      </div>
+    </div>
+  </div>
+</body>

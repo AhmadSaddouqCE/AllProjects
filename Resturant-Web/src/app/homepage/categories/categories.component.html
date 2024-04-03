@@ -1,0 +1,132 @@
+<app-header></app-header>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <h3 class="text text-center">These Are Our Categories!</h3>
+      <br />
+      <app-add-category (categoryListChanged)="updateCategoryList($event)"></app-add-category>
+      <div class="table-responsive">
+        <table class="table table-bordered text text-center custom-table">
+          <thead>
+            <tr colspan="2">
+              <td><b>Category ID</b></td>
+              <td><b>Category Name</b></td>
+            
+              <td>
+                <b> <u>Modify Category</u></b>
+              </td>
+            </tr>
+          </thead>
+        <tbody *ngIf="Categories.length > 0">
+          <tr *ngFor="let category of Categories">
+            <td>{{ category.categoryId }}</td>
+            <td>{{ category.categoryName }}</td>
+            <td class="d-flex justify-content-center">
+              <div class="px-2">
+                <button
+                class="btn fa fa-edit"
+                title="Modify Category" 
+                (click)="openEditModalCategory(category)"
+                data-bs-toggle="modal"
+                data-bs-target="#EditCategory"
+                ></button>
+              </div>
+              <div class="px-2">
+                <button class="btn fa fa-trash"
+                title="Delete Category" 
+                (click)="deleteCategory(category.categoryId)"
+                ></button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+        <tbody *ngIf="Categories.length === 0">
+          <tr>
+            <td colspan="3" class="text-center">No Categories found</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+</div>
+<div
+  class="modal"
+  id="EditCategory"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="EditCategoryLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button
+          type="button"
+          class="close p-2 mt-1"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="EditCategoryLabel" >Edit Category</h4>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="form" (ngSubmit)="editCategoryForm()" >
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input
+              type="text"
+              formControlName="name"
+              id="name"
+              class="form-control"
+              value="{{name}}"
+              placeholder="Please enter a Product Name"
+              #nameInput
+            />
+          </div>
+          
+          <div class="form-group">
+            <label for="photo">Photo</label>
+            <input
+              type="file"
+              (change)="onFileChange($event)"
+              name="photo"
+              id="photo"
+              class="form-control"
+              accept="image/*"
+              #myFileInput
+              
+            />
+          </div>
+
+          <br />
+          <br />
+          <div class="button-container d-flex justify-content-end">
+            <button
+              type="submit"
+              class="btn btn-success"
+              (click)="
+                Check(
+                  nameInput.value
+                )
+              "
+            >
+              Edit Category
+            </button>
+          </div>
+        </form>
+        <br>
+        <br>
+        <p
+          class="text-center fs-3"
+          [ngClass]="
+            isAccountCreated ? 'text-success pb-1' : 'text-danger pb-1'
+          "
+        >
+          {{ Message }}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

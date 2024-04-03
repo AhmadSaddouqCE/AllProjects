@@ -1,0 +1,147 @@
+<app-header></app-header>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <h3 class="text text-center">Adding New Order</h3>
+      <br />
+      <button
+        class="btn btn-primary"
+        data-toggle="modal"
+        data-target="#addOrderModal"
+      >
+        Add New Order
+      </button>
+      <br />
+      <br />
+      <div
+        class="modal fade"
+        id="addOrderModal"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="addOrderModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hiddent="true">&times;</span>
+              </button>
+              <h4 class="modal-title" id="addOrderModalLabel">Add New Order</h4>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="form-group">
+                  <label for="Cname">Customer Name</label>
+                  <input
+                    type="text"
+                    formControlName="Cname"
+                    id="Cname"
+                    class="form-control"
+                    placeholder="Please Enter The Customer Name"
+                    #customernameInput
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="Pname">Product Name</label>
+                  <input
+                    type="text"
+                    id="Pname"
+                    class="form-control"
+                    formControlName="Pname"
+                    placeholder="Please Enter The Product Name"
+                    #productnameInput
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="price">Price</label>
+                  <input
+                    type="text"
+                    id="Price"
+                    class="form-control"
+                    formControlName="price"
+                    placeholder="Please Enter The Price"
+                    #priceInput
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="quantity">Quantity</label>
+                  <input
+                    type="text"
+                    id="quantity"
+                    formControlName="quantity"
+                    class="form-control"
+                    placeholder="Please Enter The Quantity"
+                    #QuantityInput
+                  />
+                </div>
+                <div class="form-group">
+                    <label for="status">Status</label>
+                    <select id="status" formControlName="status" class="form-control" #statusInput>
+                      <option value="available">Pending</option>
+                      <option value="Processing">Processing</option>
+                      <option value="Shipped/Completed">Shipped/Completed</option>
+                      <option value="Cancelled">Cancelled</option>
+                    </select>
+                  </div>
+                <div class="form-group">
+                  <label for="amount">Total Amount</label>
+                  <input
+                    type="text"
+                    id="amount"
+                    class="form-control"
+                    formControlName="amount"
+                    placeholder="Please Enter The Total Amount"
+                    #amountInput
+                  />
+                </div>
+              
+                <br />
+                <br />
+                <div class="button-container">
+                  <button type="submit" class="btn btn-success">
+                    Add New Order
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Order ID</th>
+            <th scope="col">Customer Name</th>
+            <th scope="col">Product Name</th>
+            <th scope="col">Total Amount</th>
+            <th scope="col">Status</th>
+            <th scope="col">Order Date</th>
+            <th scope="col">Created At</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Ahmad</td>
+            <td>Layz</td>
+            <td>5</td>
+            <td>Not Available</td>
+            <td>2022-12-23</td>
+            <td>2024-02-14 13:04:39.3176255</td>
+          </tr>
+        </tbody>
+        <!-- <tbody *ngIf="customers.length === 0">
+          <tr>
+            <td colspan="3" class="text-center">No users found</td>
+          </tr>
+        </tbody> -->
+      </table>
+    </div>
+  </div>
+</div>

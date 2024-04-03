@@ -1,0 +1,33 @@
+body{
+    height: 100%;
+    width: 100%;
+}
+
+.container{
+    margin: 15px 20%;
+    width: 60%;
+    
+}
+.text-center{
+    margin-top: 20px;
+}
+.Signup-form h3{
+    text-align: center;
+        color: #333;
+}
+.Signup-form {
+    padding: 10%;
+    width: 100%;
+    box-shadow: 0 40px 40px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+}
+
+.btn{
+    padding: 5px 75px;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 3rem;
+    align-self: center;
+}
+.alert{
+ margin-top: 25px;
+}

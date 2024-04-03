@@ -1,0 +1,45 @@
+body{
+    height: 100%;
+    width: 100%;
+}
+
+.container{
+    margin-top: 150px;
+    width: 60%;
+    
+}
+.login-form h3{
+    text-align: center;
+        color: #333;
+}
+.login-form {
+    padding: 10%;
+    width: 100%;
+    min-height: 250;
+    
+    margin: 0 auto; 
+    box-shadow: 0 40px 40px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+}
+
+.text-center{
+    margin-top: 50px;
+}
+
+
+.btn{
+    padding: 5px 75px;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 3rem;
+    align-self: center;
+}
+.ForgetPwd{
+     float:inline-start;
+     margin-left: 10px; 
+     font-size: 17px;
+}
+.Register{
+    float: inline-end;
+    margin-top: -3.5% ;
+    font-size: 17px;
+}

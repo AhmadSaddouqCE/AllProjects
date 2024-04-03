@@ -1,0 +1,20 @@
+*{
+  background-color: whitesmoke;
+}
+.login-form{
+  box-shadow: 0 40px 40px 0 rgba(0, 0, 0, 0.2), 0 9px 29px 0 rgba(0, 0, 0, 0.19);
+  padding: 90px;
+  border-radius: 50px;
+  max-width: 1000px;
+}
+.form-control{
+  border-radius: 10px;
+}
+.btn{
+  background-color: cadetblue;
+  color:black;
+  border-radius: 150px;
+}
+.btn:hover{
+  color: bisque;
+}
