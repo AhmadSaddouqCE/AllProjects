@@ -1,0 +1,19 @@
+{
+  "Version": 1,
+  "Hash": "6hyKGmHSciiFBoyDwtgsqsLQLRGtUbYKPXXz891opx8=",
+  "Source": "CenterApp",
+  "BasePath": "_content/CenterApp",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "CenterApp\\wwwroot",
+      "Source": "CenterApp",
+      "ContentRoot": "C:\\Users\\Pavilion\\source\\repos\\CenterApp\\CenterApp\\wwwroot\\",
+      "BasePath": "_content/CenterApp",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": []
+}
