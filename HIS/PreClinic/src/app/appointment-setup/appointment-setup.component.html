@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sidebar</title>
+    <link href="https://cdn.lineicons.com/4.0/lineicons.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+
+  <body>
+    <app-header></app-header>
+    <div class="wrapper">
+      <aside id="sidebar" [class.expand]="isSidebarExpanded">
+        <div class="d-flex">
+          <button
+            id="toggle-btn"
+            class="toggle-btn"
+            type="button"
+            (click)="toggleSidebar()"
+          >
+            <i class="lni lni-grid-alt"></i>
+          </button>
+          <div class="sidebar-logo">
+            <a>Main</a>
+          </div>
+        </div>
+        <ul class="sidebar-nav">
+          <li class="sidebar-item">
+            <a routerLink="/Dashboard" class="sidebar-link">
+              <i class="fas fa-user-doctor"></i>
+              <span>Doctors</span>
+            </a>
+          </li>
+          <li class="sidebar-item">
+            <a routerLink="/Patient" class="sidebar-link">
+              <i class="fas fa-user-injured"></i>
+              <span>Patients</span>
+            </a>
+          </li>
+          <!-- <li class="sidebar-item">
+            <a
+              href="#"
+              class="sidebar-link collapsed has-dropdown"
+              data-bs-toggle="collapse"
+              data-bs-target="#auth"
+              aria-expanded="false"
+              aria-controls="auth"
+            >
+              <i class="lni lni-protection"></i>
+              <span>Auth</span>
+            </a>
+            <ul
+              id="auth"
+              class="sidebar-dropdown list-unstyled collapse"
+              data-bs-parent="#sidebar"
+            >
+              <li class="sidebar-item">
+                <a href="#" class="sidebar-link">Login</a>
+              </li>
+              <li class="sidebar-item">
+                <a href="#" class="sidebar-link">Register</a>
+              </li>
+            </ul>
+          </li> -->
+          <li class="sidebar-item">
+            <a routerLink="/Calendar-Appointment" class="sidebar-link">
+              <i class="lni lni-popup"></i>
+              <span>Appointments</span>
+            </a>
+          </li>
+          <li class="sidebar-item">
+            <a routerLink="/Appointment-Setup" class="sidebar-link">
+              <i class="fa fa-book-medical"></i>
+              <span>Appointments Setup</span>
+            </a>
+          </li>
+          <li class="sidebar-item">
+            <a routerLink="/Lookups" class="sidebar-link">
+              <i class="lni lni-cog"></i>
+              <span>System Lookups</span>
+            </a>
+          </li>
+          <li class="sidebar-item">
+            <a routerLink="/Department-Branches" class="sidebar-link">
+              <i class="fa fa-section"></i>
+              <span>Departments/Branches</span>
+            </a>
+          </li>
+        </ul>
+        <div class="sidebar-footer">
+          <a href="#" class="sidebar-link">
+            <i class="lni lni-exit"></i>
+            <span>Logout</span>
+          </a>
+        </div>
+      </aside>
+      <div class="container-fluid d-flex">
+        <div class="col-4">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="main mt-5 m-3" style="flex: 1">
+                <div class="container d-grid justify-content-start pb-3">
+                  <strong> Department List </strong>
+                </div>
+                <div class="container form-group">
+                  <label for="status" class="pb-2">Branches</label>
+                  <select
+                    class="form-control form-select"
+                    id="status"
+                    [(ngModel)]="selectBranchForDepartment"
+                    (ngModelChange)="setDepartments(selectBranchForDepartment)"
+                  >
+                    <option
+                      *ngFor="let branch of listOfBranches"
+                      [value]="branch.branchNameE"
+                    >
+                      {{ branch.branchNameE }}
+                    </option>
+                  </select>
+                </div>
+                <div
+                  class="table-responsive d-flex justify-content-center align-items-center w-100 p-2"
+                >
+                  <table class="table text text-start custom-table">
+                    <thead>
+                      <tr colspan="2">
+                        <th><b>Name English</b></th>
+                        <th><b>Name Arabic</b></th>
+                      </tr>
+                    </thead>
+                    <tbody *ngIf="DepartmentsList.length > 0">
+                      <tr
+                        *ngFor="let departments of DepartmentsList"
+                        (click)="sendDepartentName(departments.departmentName)"
+                        role="button"
+                      >
+                        <td>{{ departments.departmentName }}</td>
+                        <td>{{ departments.departmentNameA }}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-8">
+          <div
+            class="container-fluid d-flex justify-content-center align-items-center"
+          >
+            <div class="row">
+              <div class="new-box mt-5 ms-3" style="flex: 1">
+                <div class="container d-grid justify-content-start pb-2">
+                  <strong> Appointment Setup Details </strong>
+                </div>
+                <div
+                  class="row"
+                  *ngIf="setDepartmentForSetup && DoctorsList.length > 0"
+                >
+                  <div class="col">
+                    <div class="container form-group">
+                      <label for="department" class="pb-2">Department</label>
+                      <div class="container form-control" style="width: 250px;">
+                        {{ this.setDepartmentForSetup }}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="container form-group">
+                      <label for="doctor" class="pb-2">Doctor</label>
+                      <select
+                        class="form-control form-select"
+                        id="doctor"
+                        [(ngModel)]="selectedDoctor"
+                        (ngModelChange)="getAppointmentDetails()"
+                      >
+                      <option disabled class="d-none"></option>
+                        <option
+                          *ngFor="let doctor of DoctorsList"
+                          [value]="doctor.doctorNameE"
+                        >
+                          {{ doctor.doctorNameE }}
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="container form-group">
+                      <label for="duration" class="pb-2"
+                        >Duration in Minute</label
+                      >
+                      <input
+                        type="text"
+                        name="duration"
+                        id="duration"
+                        class="form-control"
+                        [(ngModel)]="setDuration"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="table-responsive">
+                  <table class="table text text-center custom-table">
+                    <thead>
+                      <tr colspan="7">
+                        <th><b>#</b></th>
+                        <th><b>Day</b></th>
+                        <th><b>From Time</b></th>
+                        <th><b>To Time</b></th>
+                        <th><b>Break In</b></th>
+                        <th><b>Break Out</b></th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let entry of timeEntries; let i = index">
+                        <td>
+                          <div class="border-0 form-control">{{ i + 1 }}</div>
+                        </td>
+                        <td>
+                          <div class="border-0 form-control">
+                            {{ entry.dayOfWeek }}
+                          </div>
+                        </td>
+                        <td>
+                          <input
+                            type="time"
+                            [name]="'from-time-' + i"
+                            class="form-control"
+                            [(ngModel)]="entry.fromTime"
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="time"
+                            [name]="'to-time-' + i"
+                            class="form-control"
+                            [(ngModel)]="entry.toTime"
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="time"
+                            [name]="'break-in-' + i"
+                            class="form-control"
+                            [(ngModel)]="entry.breakIn"
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="time"
+                            [name]="'break-out-' + i"
+                            class="form-control"
+                            [(ngModel)]="entry.breakOut"
+                          />
+                        </td>
+                        <td>
+                          <div class="border-0 form-control">
+                            <i
+                              role="button"
+                              class="fa fa-times"
+                              (click)="clear(i)"
+                            ></i>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div
+                  class="container d-flex justify-content-end align-items-end"
+                >
+                  <div class="row">
+                    <button
+                      class="btn btn-outline-success"
+                      (click)="submitTimeEntries()"
+                    >
+                      Save Changes
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

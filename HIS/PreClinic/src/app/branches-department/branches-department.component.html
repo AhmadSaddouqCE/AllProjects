@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sidebar</title>
+    <link href="https://cdn.lineicons.com/4.0/lineicons.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+
+  <body>
+    <app-header></app-header>
+    <div class="wrapper">
+      <aside id="sidebar" [class.expand]="isSidebarExpanded">
+        <div class="d-flex">
+          <button
+            id="toggle-btn"
+            class="toggle-btn"
+            type="button"
+            (click)="toggleSidebar()"
+          >
+            <i class="lni lni-grid-alt"></i>
+          </button>
+          <div class="sidebar-logo">
+            <a>Main</a>
+          </div>
+        </div>
+        <ul class="sidebar-nav">
+          <li class="sidebar-item">
+            <a routerLink="/Dashboard" class="sidebar-link">
+              <i class="fas fa-user-doctor"></i>
+              <span>Doctors</span>
+            </a>
+          </li>
+          <li class="sidebar-item">
+            <a routerLink="/Patient" class="sidebar-link">
+              <i class="fas fa-user-injured"></i>
+              <span>Patients</span>
+            </a>
+          </li>
+          <!-- <li class="sidebar-item">
+            <a
+              href="#"
+              class="sidebar-link collapsed has-dropdown"
+              data-bs-toggle="collapse"
+              data-bs-target="#auth"
+              aria-expanded="false"
+              aria-controls="auth"
+            >
+              <i class="lni lni-protection"></i>
+              <span>Auth</span>
+            </a>
+            <ul
+              id="auth"
+              class="sidebar-dropdown list-unstyled collapse"
+              data-bs-parent="#sidebar"
+            >
+              <li class="sidebar-item">
+                <a href="#" class="sidebar-link">Login</a>
+              </li>
+              <li class="sidebar-item">
+                <a href="#" class="sidebar-link">Register</a>
+              </li>
+            </ul>
+          </li> -->
+          <li class="sidebar-item">
+            <a routerLink="/Calendar-Appointment" class="sidebar-link">
+              <i class="lni lni-popup"></i>
+              <span>Appointments</span>
+            </a>
+          </li>
+          <li class="sidebar-item">
+            <a routerLink="/Appointment-Setup" class="sidebar-link">
+              <i class="fa fa-book-medical"></i>
+              <span>Appointments Setup</span>
+            </a>
+          </li>
+          <li class="sidebar-item">
+            <a routerLink="/Lookups" class="sidebar-link">
+              <i class="lni lni-cog"></i>
+              <span>System Lookups</span>
+            </a>
+          </li>
+          <li class="sidebar-item">
+            <a routerLink="/Department-Branches" class="sidebar-link">
+              <i class="fa fa-section"></i>
+              <span>Departments/Branches</span>
+            </a>
+          </li>
+        </ul>
+        <div class="sidebar-footer">
+          <a href="#" class="sidebar-link">
+            <i class="lni lni-exit"></i>
+            <span>Logout</span>
+          </a>
+        </div>
+      </aside>
+      <div
+        class="container-fluid d-flex justify-content-center align-items-center px-5"
+      >
+        <div class="row">
+          <div class="main">
+            <div
+              class="container d-flex flex-column justify-content-between pb-3 w-100"
+            >
+              <strong class="pb-1">Add Department</strong>
+              <form [formGroup]="formDepartment" (ngSubmit)="addDepartment()">
+                <div class="row border-1 border-bottom py-2">
+                  <div class="col-6 form-group pb-2">
+                    <label for="departmentNameE">Name En:</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="departmentNameE"
+                      name="departmentNameE"
+                      formControlName="departmentNameE"
+                    />
+                  </div>
+                  <div class="col-6 form-group pb-2">
+                    <label for="departmentNameE">Name Ar:</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="departmentNameA"
+                      name="departmentNameA"
+                      formControlName="departmentNameA"
+                    />
+                  </div>
+                  <div
+                    class="col-12 d-flex justify-content-end align-items-end"
+                  >
+                    <button class="btn btn-outline-success">
+                      Add Department
+                    </button>
+                  </div>
+                </div>
+              </form>
+              <strong class="py-2">Add Branch</strong>
+              <form [formGroup]="formBranch" (ngSubmit)="addBranch()">
+                <div class="row border-1 border-bottom py-2">
+                  <div class="col-6 form-group pb-2">
+                    <label for="departmentNameE">Name En:</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="branchNameE"
+                      name="branchNameE"
+                      formControlName="branchNameE"
+                    />
+                  </div>
+                  <div class="col-6 form-group pb-2">
+                    <label for="departmentNameE">Name Ar:</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="branchNameA"
+                      name="branchNameA"
+                      formControlName="branchNameA"
+                    />
+                  </div>
+                  <div
+                    class="col-12 d-flex justify-content-end align-items-end"
+                  >
+                    <button class="btn btn-outline-success">
+                      Add Branch
+                    </button>
+                  </div>
+                </div>
+              </form>
+              <strong class="py-2">Add Departments to Branch</strong>
+              <form [formGroup]="formDepartmentBranch" (ngSubmit)="addDepartmentToBranch()">
+                <div class="row border-1 border-bottom py-2">
+                  <div class="col-6 form-group pb-2">
+                    <label for="Branches">Branches</label>
+                    <select
+                    class="form-control form-select"
+                    id="branch"
+                    name="branch"
+                    formControlName="branch"
+                    #inputBranch
+                  >
+                  <option
+                  *ngFor="let branch of BranchesList"
+                  [value]="branch.branchNameE"
+                >
+                  {{ branch.branchNameE }}
+                </option>
+                  </select>
+                  </div>
+                  <div class="col-6 form-group pb-2">
+                    <label for="Departments">Departments</label>
+                    <select
+                    class="form-control form-select"
+                    id="department"
+                    name="department"
+                    formControlName="department"
+                    #inputDepartment
+                  >
+                  <option
+                  *ngFor="let department of DepartmentsList"
+                  [value]="department.departmentNameE"
+                >
+                  {{ department.departmentNameE }}
+                </option>
+                  </select>
+                  </div>
+                  <div
+                    class="col-12 d-flex justify-content-end align-items-end"
+                  >
+                    <button class="btn btn-outline-success">
+                      Save Changes
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
